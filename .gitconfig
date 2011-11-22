@@ -45,6 +45,7 @@
 
     # Provide a nice, compact format for the git log (use with `git lg`)
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
+	review = notes add -m 'Reviewed-by: Ayala Shachar <ayalash@il.ibm.com>'
 
 [github]
 	email = ayalash83@gmail.com
