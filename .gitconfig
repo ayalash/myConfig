@@ -1,5 +1,5 @@
 [user]
-	name = Ayala Shachar
+name = Ayala Shachar
 	email = ayalash@il.ibm.com
 
 # Use colors in output wherever it makes sense
@@ -45,7 +45,32 @@
 
     # Provide a nice, compact format for the git log (use with `git lg`)
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
+    pushr = push origin refs/notes/*
 	review = notes add -m 'Reviewed-by: Ayala Shachar <ayalash@il.ibm.com>'
+    reviewpython = !"review() { CMD=\"`~/source/utils/exp/garage/gitReview.py $@`\"; echo $CMD; eval $CMD; }; review"
+    lastone = !"getName() { ldapsearch -h bluepages.ibm.com -b 'OU=bluepages,o=ibm.com' -x \"(primaryUserId=$1)\" | grep \"cn: \" | sed \"s/cn: //g\"; }; \
+                review() { git notes add -fm \"Reviewed-by: `getName $1`\" $2;}; review"
+
+    reviewbash = !"getName() { ldapsearch -h bluepages.ibm.com -b 'OU=bluepages,o=ibm.com' -x \"(primaryUserId=$1)\" | \
+                               awk -F ': ' '{ if ($0 ~ /^cn:/) name=$2; else if ($0 ~ /^mail:/) email=tolower($2)} END { print name,\"<\"email\">\" }'; }; \
+                   addNote() { [ \"$reviewer\" = \" <>\" ] && echo \"Error: $username not a valid user\" || { git notes add -fm \"Reviewed-by: $reviewer\" $@; git pushr; }; };\
+                   review() { [ $# -eq 0 ] && username=$USER || { username=$1; shift; }; reviewer=\"`getName $username`\"; addNote $@; }; review"
+
+    reviewtermenu = !"getName() { ldapsearch -h bluepages.ibm.com -b 'OU=bluepages,o=ibm.com' -x \"(primaryUserId=$1)\" | grep \"cn: \" | sed \"s/cn: //g\"; }; \
+                      getReviewer() { getName `termenu alekseyd ayalash elig eyalbe gavriep oferko yuvalw`; }; \
+                      review() { git notes add -fm \"Reviewed-by: `getReviewer`\" $@; }; review"
+
+    #review = notes add -m 'Reviewed-by: `ldapsearch -h bluepages.ibm.com -b 'OU=bluepages,o=ibm.com' -x '(primaryUserId=ayalash)' | grep "cn: " | sed "s/cn: //g"'`
+    #forcheck = !sh -c "git checkout $1" -
+    #forcheck = !sh -c ~/source/utils/exp/garage/check.py $* -
+    #forcheck3 = !"f() { git checkout $1 && git status; };f"
+    #forcheck4 = !"f() { git notes add -f -m Reviewed-by:\\ $1@il.ibm.com; };f"
+    #forcheck5 = !sh -c "~/source/utils/exp/garage/check.py $@" -
+    #forcheck6 = !"f() { ~/source/utils/exp/garage/check.py $*; };f"
+    #forcheck7 = !"foo() { ~/source/utils/exp/garage/check.py\\ $*; }; f() { git notes add -f -m Reviewed-by:\\ `foo`; };f"
+    #forcheck8 = !"foo2() { git forcheck6 $1; }; foo2"
+    #forcheck9 = !"getuserstr() { ~/source/utils/exp/garage/check.py $1; }; calller() { getuserstr $1; }; calller"
+    #forcheck10 = !"getuserstr() { ~/source/utils/exp/garage/check.py $1; }; calller() { git notes add -fm \"Reviewed-by: `getuserstr $1`\" $2; }; calller"
 
 [github]
 	email = ayalash83@gmail.com
