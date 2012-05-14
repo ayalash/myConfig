@@ -1,0 +1,9 @@
+caption always "%n(%t) : %C"
+hardstatus alwayslastline
+hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%D %d/%m/%y | %C:%s %A | %1`%{-}'
+defscrollback 1024
+startup_message off
+hardstatus on
+hardstatus alwayslastline
+#escape ^\\
+#bindkey -k F2 command
