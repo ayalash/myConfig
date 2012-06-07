@@ -8,8 +8,8 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias agrep='grep -nR --color=always --exclude=cscope.out --exclude=tags'
-    alias antgrep="agrep --exclude-dir='./ut' --exclude-dir='./reut' --exclude-dir='./.git'"
+    alias agrep='grep -nR --color=always --exclude=cscope.out --exclude=tags --exclude-dir=".git"'
+    alias antgrep='agrep --exclude-dir="./ut" --exclude-dir="./reut" --exclude-dir="./.git" --exclude="./deps/iotool/xiv"'
     alias  grep='grep --color=always'
     alias fgrep='fgrep --color=always'
     alias egrep='egrep --color=always'
