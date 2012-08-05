@@ -47,6 +47,7 @@ alias killnotes='/opt/ibm/lotus/notes/nsdcollector.sh -kill'
 alias screenls='sudo ls -laR /var/run/screen'
 alias screenproc='ps auxw | grep -i screen | grep -v grep'
 alias reptyr_rpyc="sudo ~/source/reptyr/reptyr -s $(ps aux | grep classic_server | grep -v grep | grep -v sudo | awk '{print $2}')"
+alias within_virtualenv='f() { os_type=$(ls --color=never ~/opt/virtualenvs/python2.7/per-os/ | termenu -o) && ~/opt/virtualenvs/python2.7/per-os/${os_type}/tlib/bin/python2.7 $@; }; f $@'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
