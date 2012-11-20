@@ -8,20 +8,21 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias agrep='grep -nR --color=always --exclude=cscope.out --exclude=tags --exclude-dir=".git"'
+    alias cs='grep -nR --color=always --include=*.py'
+    alias agrep='grep -nR --color=always'
     alias antgrep='agrep --exclude-dir="./ut" --exclude-dir="./reut" --exclude-dir="./.git" --exclude="./deps/iotool/xiv"'
-    alias  grep='grep --color=always'
-    alias fgrep='fgrep --color=always'
-    alias egrep='egrep --color=always'
-    alias less='less -Rs'
+#    alias  grep='grep --color=always'
+#    alias fgrep='fgrep --color=always'
+#    alias egrep='egrep --color=always'
+#    alias less='less -Rs'
 fi
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias aptitude='sudo aptitude'
-alias apt-get='sudo apt-get'
+#alias aptitude='sudo aptitude'
+#alias apt-get='sudo apt-get'
 
 # My aliases
 alias gdiff='git diff; git submodule foreach --quiet git diff'
@@ -49,7 +50,7 @@ alias screenls='sudo ls -laR /var/run/screen'
 alias screenproc='ps auxw | grep -i screen | grep -v grep'
 alias reptyr_rpyc="sudo ~/source/reptyr/reptyr -s $(ps aux | grep classic_server | grep -v grep | grep -v sudo | awk '{print $2}')"
 #alias within_virtualenv='f() { os_type=$(ls --color=never ~/opt/virtualenvs/python2.7/per-os/ | termenu -o) && ~/opt/virtualenvs/python2.7/per-os/${os_type}/tlib/bin/python2.7 $@; }; f $@'
-alias within_virtualenv='f() { ~/opt/virtualenvs/python2.7/per-os/ubuntu-10.10/tlib/bin/python2.7 $@; }; f $@'
+alias within_virtualenv='f() { /opt/virtualenvs/python2.7/per-os/ubuntu-12.04/tlib/bin/python2.7 $@; }; f $@'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
