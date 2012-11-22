@@ -37,7 +37,7 @@ alias seecode='getList() { agrep $@ | termenu -m -o | awk -F '\''[\n|:]'\'' '\''
 #alias seecode='getList() { agrep $@ | termenu -m -o | awk -F '\'':'\'' '\''{print "gvim --remote-silent +"$2,$1}'\''; }; \
 #               openFiles() { echo $(getList $@); }; openFiles $@'
 alias gcheckout='fullcheckout () { git checkout $(git branch -l | sed "s/^*//" | termenu) && git submodule update --init --recursive; }; fullcheckout $@'
-alias e='gvim -S ~/.vim.sess --remote-silent'
+alias e='gvim --remote-silent'
 #alias e='ff () { gvim -S ~/.vim.sess --remote-silent `find . -name $@ | termenu -o 2> /dev/null` 2> /dev/null; }; ff $@'
 alias settitle='ff () { PROMPT_COMMAND="echo -ne \"\033]0;$@\007\""; }; ff $@'
 alias gsu='git submodule --quiet update --init --recursive'
