@@ -43,7 +43,7 @@ name = Ayala Shachar
     integrate = !git push origin +HEAD:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
     unintegrate = !git push origin +:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
 
-    mygrep = !"getGrepped() { grep_str=$1; git grep -n grep_str && git submodule foreach git grep -n grep_str; }; getGrepped"
+    mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n grep_str && git submodule foreach git --no-pager grep -n grep_str; }; getGrepped"
 
     # Provide a nice, compact format for the git log (use with `git lg`)
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
