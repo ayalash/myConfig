@@ -1,7 +1,8 @@
 #caption splitonly "%n (%t) : %C"
 #caption splitonly "%H: %t [%u]"
 hardstatus alwayslastline
-hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%H | %D %d/%m/%y | %c:%s | %1`%{-}'
+#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%H | %D %d/%m/%y | %c:%s | %1`%{-}'
+hardstatus string '%{= kW}%-Lw%{= kC}%50> %n*%f %t%{= kW}%+Lw%< %{= kW}%-=%H | %D %d/%m/%y | %c:%s | %1`%{-}'
 ##hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %d/%m %C%a "
 caption splitonly "[%n]: %t%? @%u%?%?"
 defscrollback 1024
