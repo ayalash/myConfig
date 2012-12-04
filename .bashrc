@@ -57,6 +57,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+PROMPT_COMMAND="echo -ne \"\033]0;${HOSTNAME} ($(date +%F\ %R))\007$\""
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
