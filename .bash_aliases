@@ -28,6 +28,8 @@ alias l='ls -CF'
 alias gdiff='git diff; git submodule foreach --quiet git diff'
 alias ssh_host='f() { val=$(cat ~/.xhost); echo "Connecting to "$val; ssh $val; }; f'
 alias ssh_system='f() { val=$(cat ~/.xsystem); echo "Connecting to "$val; ssh $val; }; f'
+alias see_suite='showSuite() { for f in $(ls -1 --color=never | grep ^0 --color=never); do cat $f/console.log; done; }; \
+                 gotoSuite() { suiteNo=$1; dirName=/qa/tlib/logs/suites/${suiteNo#${suiteNo%??}}/$suiteNo; pushd $dirName; showSuite; popd; }; gotoSuite $@'
 #alias seecode='getList() { agrep unequippedModules . | termenu -m -o | awk -F '\'':'\'' '\''{print "vim +"$2,$1}'\''; }; getList $@'
 #alias seecode='getList() { agrep $@ | termenu -m -o | awk -F '\'':'\'' '\''{print "vim +"$2,$1}'\''; }; getList $@'
 #alias seecode='getList() { agrep $@ | termenu -m -o | awk -F '\'':'\'' '\''BEGIN {print "\" \\"} {print "gvim --remote-silent +"$2,$1"; \\"} END {print "\""}'\''; }; getList $@'
