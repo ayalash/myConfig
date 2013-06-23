@@ -5,11 +5,14 @@ name = Ayala Shachar
 # Use colors in output wherever it makes sense
 [color]
     ui = on
+    grep = always
 
 [core]
     ignorecase = true
     excludesfile = ~/.gitignore
 
+[grep]
+    lineNumber = true
 # Make git push do what you would expect: push to the tracked branch
 [push]
     default = tracking
@@ -30,6 +33,7 @@ name = Ayala Shachar
 [diff]
     tool = p4merge
     mnemonicprefix = true
+	renames = true
 [difftool]
     prompt = no
 [difftool.p4merge]
@@ -43,7 +47,10 @@ name = Ayala Shachar
     integrate = !git push origin +HEAD:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
     unintegrate = !git push origin +:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
 
-    mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n grep_str && git submodule foreach git --no-pager grep -n grep_str; }; getGrepped"
+    search = !"search() { git branch -l | grep $@; }; search"
+    store = !git branch garage/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')_/archived_$(date +%Y_%m_%d)
+    #mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n grep_str && git submodule foreach git --no-pager grep -n grep_str; }; getGrepped"
+    mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n --color=always $grep_str; git submodule --quiet foreach \"git grep -n --color=always $grep_str; true\"; }; getGrepped"
 
     # Provide a nice, compact format for the git log (use with `git lg`)
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
@@ -54,3 +61,5 @@ name = Ayala Shachar
 	email = ayalash83@gmail.com
 	user = ayalash
 	token = f5d81307ae5a99ff2fc8ba147c4b4b8b
+[branch]
+	autosetuprebase = always
