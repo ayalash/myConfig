@@ -49,7 +49,6 @@ name = Ayala Shachar
 
     search = !"search() { git branch -l | grep $@; }; search"
     store = !git branch garage/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')_/archived_$(date +%Y_%m_%d)
-    #mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n grep_str && git submodule foreach git --no-pager grep -n grep_str; }; getGrepped"
     mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n --color=always $grep_str; git submodule --quiet foreach \"git grep -n --color=always $grep_str; true\"; }; getGrepped"
 
     # Provide a nice, compact format for the git log (use with `git lg`)
@@ -60,6 +59,5 @@ name = Ayala Shachar
 [github]
 	email = ayalash83@gmail.com
 	user = ayalash
-	token = f5d81307ae5a99ff2fc8ba147c4b4b8b
 [branch]
 	autosetuprebase = always
