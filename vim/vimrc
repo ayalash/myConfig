@@ -1,0 +1,71 @@
+" Autoload package bundles
+source ~/.vim/bundle/vim-pathgen/autoload/pathogen.vim
+call pathogen#incubate()
+call pathogen#helptags()
+
+set nocompatible
+" colorscheme Tomorrow-Night-Bright "vividchalk
+
+" Convince Vim it can use 256 colors inside Gnome Terminal.
+" Needs CSApprox plugin
+set t_Co=256
+
+" Fix ruby (rvm) & vim problem on macos
+let $RUBYHOME=$HOME."/.rvm/rubies/default"
+set rubydll=$HOME/.rvm/rubies/default/lib/libruby.dylib
+
+set nu
+syntax on
+filetype indent plugin on
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set hlsearch
+set nowrap
+set wrapmargin=0
+set textwidth=0
+set noswapfile
+
+set history=50      " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+
+let mapleader = ","
+
+" Vim shourtcuts
+" Cancel search highlighting
+nmap <silent><Leader>/ :nohlsearch<CR>
+" Remove trailing whitespaces
+nmap <silent><Leader>s :%s/\s\+$<CR>
+" Build docs (with sphinx)
+" nmap <silent><Leader>d :!sphinx-build -b html doc build<CR>
+" Run unitests (with nosetests) for current file
+" nmap <silent><Leader>nc :!nosetests %:p<CR>
+" Run unitests (with nosetests) on whole the tests directory of current directory
+" nmap <silent><Leader>na :!nosetests -w tests<CR>
+" Run unitests (with nosetests) on whole the tests directory of current directory
+" nmap <Leader>nd :!nosetests tests/test_doctests.py<CR>
+"nmap <Leader>nd :!~/qa/virtualenv/bin/nosetests tests/test_doctests.py :copen<CR>
+
+" Command-T Shortcuts
+" Display opened buffers
+noremap <Leader>b :CommandTBuffer<CR>
+
+" NerdTree Shortcuts
+noremap <Leader>d :NERDTreeToggle<CR>
+
+" Fugitive Shortcuts
+noremap <Leader>gg :silent Ggrep <cword><CR>:copen<CR>
+noremap <Leader>gG :copen<CR>:Ggrep
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gdiff<CR>
+
+" Status bar
+set laststatus=2 " Enables the status line at the bottom of Vim
+set statusline=\ %F\ %m\ %{fugitive#statusline()}\ %=%l,%c\
+
+set wildchar=<Tab> wildmenu wildmode=longest:full
+
+" Set font for macvim
+if has("gui_macvim")
+    set guifont=Monaco:h12
+endif

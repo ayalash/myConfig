@@ -1,0 +1,13 @@
+[MESSAGES CONTROL]
+disable=R,attribute-defined-outside-init,bad-builtin,bad-continuation,broad-except,invalid-name,locally-disabled,missing-docstring,redefined-outer-name,ungrouped-imports,unused-argument,wrong-import-order,wrong-import-position,bad-option-value,logging-fstring-interpolation,logging-format-interpolation,useless-super-delegation
+
+[TYPECHECK]
+ignored-modules=flux.current_timeline
+
+[FORMAT]
+max-line-length=150
+
+[REPORTS]
+reports=no
+score=no
+output-format=parseable

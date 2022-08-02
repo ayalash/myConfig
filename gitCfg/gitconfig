@@ -1,63 +1,67 @@
 [user]
-name = Ayala Shachar
-	email = ayalash@il.ibm.com
-
-# Use colors in output wherever it makes sense
+    name = Ayala Shachar
+    useConfigOnly = true
 [color]
     ui = on
-    grep = always
-
+    grep = auto
+[color "diff"]
+    whitespace = red reverse
 [core]
-    ignorecase = true
     excludesfile = ~/.gitignore
-
+    editor = vim
+    untrackedCache = true
+    pager = less -F -X
+[commit]
+    verbose = true
+[diff]
+    renames = copies
+    renamelimit = 0
 [grep]
     lineNumber = true
-# Make git push do what you would expect: push to the tracked branch
-[push]
-    default = tracking
-
-# Use p4merge as graphical mergetool (some bit are Mac specific and may need to be modified)
-[merge]
-    tool = p4merge
-    keepBackup = false
-[mergetool]
-    prompt = no
-[mergetool.p4merge]
-    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-    keepTemporaries = false
-    trustExitCode = false
-    keepBackup = false
-
-# Same for difftool
-[diff]
-    tool = p4merge
-    mnemonicprefix = true
-	renames = true
-[difftool]
-    prompt = no
-[difftool.p4merge]
-    cmd = p4merge "$LOCAL" "$REMOTE"
-
-# Useful aliases
-[alias]
-    trash = !git add . && git commit -m 'trash' && git reset --hard HEAD^
-    propose = !git push origin +HEAD:$USER/proposed/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    unpropose = !git push origin +:$USER/proposed/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    integrate = !git push origin +HEAD:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-    unintegrate = !git push origin +:$USER/integrate/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')
-
-    search = !"search() { git branch -l | grep $@; }; search"
-    store = !git branch garage/$(git-symbolic-ref HEAD | sed 's/^refs\\/heads\\///')_/archived_$(date +%Y_%m_%d)
-    mygrep = !"getGrepped() { grep_str=$1; git --no-pager grep -n --color=always $grep_str; git submodule --quiet foreach \"git grep -n --color=always $grep_str; true\"; }; getGrepped"
-
-    # Provide a nice, compact format for the git log (use with `git lg`)
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
-    pushr = push origin refs/notes/*
-	review = notes add -m 'Reviewed-by: Ayala Shachar <ayalash@il.ibm.com>'
-
-[github]
-	email = ayalash83@gmail.com
-	user = ayalash
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
+[alias]
+    fix = commit --amend --no-edit --no-verify
+    propose = !git push -u origin +HEAD:$USER/$(git-symbolic-ref --short HEAD)
+    unpropose = !git push origin +:$USER/$(git-symbolic-ref --short HEAD)
+    mr = !git push -u origin +HEAD:mr/$(git-symbolic-ref --short HEAD)
+    br = branch -vv --sort=-committerdate
+    lo = !git lg @{upstream}..
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn (%an)%Creset' --abbrev-commit --date=relative
+    search = !"search() { git branch -l | grep $@; }; search"
+    store = !git branch garage/$(git-symbolic-ref --short HEAD)/archived_$(date +%Y_%m_%d)
+    freeze = !git branch tmp/$(git-symbolic-ref --short HEAD)/archived_$(date +%Y-%m-%d__%H-%M)
+    unfreeze = !git branch -D $(git branch -l | grep tmp/$(git-symbolic-ref --short HEAD))
+    cached = diff --cached
+    last = !"last_commits() { git lg ${@:2} -${1:-10}; }; last_commits"
+    flush = !git add -A && git commit -m "flush" --no-verify && git reset --hard HEAD@{1}
+    savepoint = !git commit -am "Savepoint"
+    conflicts = !git diff --name-only --diff-filter=U
+[fetch]
+    prune = true
+[push]
+    default = simple
+[magithub]
+    online = false
+[magithub "status"]
+    includeStatusHeader = false
+    includePullRequestsSection = false
+    includeIssuesSection = false
+[pager]
+    diff = delta
+    show = delta
+[delta]
+    features = line-numbers decorations
+    whitespace-error-style = red reverse
+
+[delta "decorations"]
+    file-decoration-style = none
+    file-style = bold yellow ul
+    hunk-header-decoration-style = blue ul
+[interactive]
+    diffFilter = delta --color-only
+[credential]
+    helper = store
+[pull]
+    rebase = true
+    ff = only
