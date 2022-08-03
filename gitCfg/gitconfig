@@ -24,7 +24,6 @@
     fix = commit --amend --no-edit --no-verify
     propose = !git push -u origin +HEAD:$USER/$(git-symbolic-ref --short HEAD)
     unpropose = !git push origin +:$USER/$(git-symbolic-ref --short HEAD)
-    mr = !git push -u origin +HEAD:mr/$(git-symbolic-ref --short HEAD)
     br = branch -vv --sort=-committerdate
     lo = !git lg @{upstream}..
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn (%an)%Creset' --abbrev-commit --date=relative
@@ -41,27 +40,6 @@
     prune = true
 [push]
     default = simple
-[magithub]
-    online = false
-[magithub "status"]
-    includeStatusHeader = false
-    includePullRequestsSection = false
-    includeIssuesSection = false
-[pager]
-    diff = delta
-    show = delta
-[delta]
-    features = line-numbers decorations
-    whitespace-error-style = red reverse
-
-[delta "decorations"]
-    file-decoration-style = none
-    file-style = bold yellow ul
-    hunk-header-decoration-style = blue ul
-[interactive]
-    diffFilter = delta --color-only
-[credential]
-    helper = store
 [pull]
     rebase = true
     ff = only

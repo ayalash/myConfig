@@ -28,12 +28,13 @@ _CONFIGURATION_INFO_LIST = [
     ConfigurationInfo(f"{_SCRIPT_DIR}/topgrade.toml", "~/.config/topgrade.toml", should_ensure_dir=True),
     ConfigurationInfo(f"{_SCRIPT_DIR}/bat.conf", "~/.config/bat/config", should_ensure_dir=True),
     ConfigurationInfo(f"{_SCRIPT_DIR}/karabiner.json", "~/.config/karabiner/karabiner.json", should_ensure_dir=True),
-    ConfigurationInfo(f"{_SCRIPT_DIR}/zsh/zsh.fzf", "~/.zsh.fzf"),
-    ConfigurationInfo(f"{_SCRIPT_DIR}/zsh/bash.fzf", "~/.bash.fzf"),
     ConfigurationInfo(f"{_SCRIPT_DIR}/zsh/zshrc", "~/.zshrc"),
     ConfigurationInfo(f"{_SCRIPT_DIR}/zsh/{_OS_TYPE_NAME}-zshrc", f"~/.{_OS_TYPE_NAME}-zshrc"),
+    ConfigurationInfo(f"{_SCRIPT_DIR}/tmux/tmux.conf", "~/.tmux.conf"),
+    ConfigurationInfo(f"{_SCRIPT_DIR}/vim/vimrc", "~/.vimrc"),
+    ConfigurationInfo(f"{_SCRIPT_DIR}/vim/vim", "~/.vim"),
+    ConfigurationInfo(f"{_SCRIPT_DIR}/pylintrc", "~/.pylintrc", create_by_default=False),
     ConfigurationInfo(f"{_SCRIPT_DIR}/screenrc", "~/.screenrc", create_by_default=False),
-    ConfigurationInfo(f"{_SCRIPT_DIR}/tmux.conf", "~/.tmux.conf", create_by_default=False),
 ]
 
 def convert_to_path(path_str: str, /) -> Path:

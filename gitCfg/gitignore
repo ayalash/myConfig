@@ -1,20 +1,3 @@
-# Vim ignore list
-.vim/.netrwhist
-# Emacs ignore list
-.emacs.d/auto-save-list/.saves-*
-.emacs.d/semanticdb
-.emacs.d/elpa
-.emacs.d/ac-comphist.dat
-.emacs.d/projectile-bookmarks.eld
-logs
-command-t.vba
-tags
-.idea
-.gradle
-.pytest_cache
-.dir-locals.el
-pip-wheel-metadata
-venv
+.vscode/
 .DS_Store
 *.code-workspace
-.vscode/
