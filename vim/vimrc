@@ -1,7 +1,8 @@
 " Autoload package bundles
 source ~/.vim/bundle/vim-pathgen/autoload/pathogen.vim
-call pathogen#incubate()
-call pathogen#helptags()
+execute pathogen#infect()
+" call pathogen#incubate()
+" call pathogen#helptags()
 
 set nocompatible
 " colorscheme Tomorrow-Night-Bright "vividchalk
