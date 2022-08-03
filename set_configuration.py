@@ -85,7 +85,7 @@ def main():
                     print("\tLink already exists. skipping...")
         else:
             if not args.dry_run:
-                print("Creating symlink!!!!!!!")
+                print("\tLink was created")
                 if cfg_info.should_ensure_dir:
                     dir_path = os.path.dirname(link_path)
                     print(f"\tEnsuring directory path: {dir_path}")

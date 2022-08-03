@@ -33,9 +33,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 source_if_exist() { [[ -s $1 ]] && source $1 }
 
-source_if_exist $HOME/.darwinrc
-source_if_exist $HOME/.workrc
-source_if_exist $HOME/.computerrc
+source_if_exist $HOME/.darwin-zshrc
+source_if_exist $HOME/.work-zshrc
+source_if_exist $HOME/.computer-zshrc
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
