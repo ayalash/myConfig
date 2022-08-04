@@ -31,7 +31,7 @@ LESS='-R -n'
 alias ll='ls -alh'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-source_if_exist() { [[ -s $1 ]] && source $1 }
+source_if_exist() { [[ -s $1 ]] && source $1 || true}
 
 source_if_exist $HOME/.darwin-zshrc
 source_if_exist $HOME/.work-zshrc
@@ -43,5 +43,5 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source_if_exist $HOME/.fzf.zsh
 
