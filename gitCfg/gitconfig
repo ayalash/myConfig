@@ -36,6 +36,7 @@
     flush = !git add -A && git commit -m "flush" --no-verify && git reset --hard HEAD@{1}
     savepoint = !git commit -am "Savepoint"
     conflicts = !git diff --name-only --diff-filter=U
+    cshow = !"content_show() { git show $@ -- ':!Cargo.lock' ':!package-lock.json'; }; content_show"
 [fetch]
     prune = true
 [push]
