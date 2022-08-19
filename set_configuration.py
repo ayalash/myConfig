@@ -79,7 +79,7 @@ def main():
                 handle_err("Cannot create symlink, Regular file exists")
             else:
                 curr_linked_path = os.readlink(link_path)
-                if curr_linked_path != config_path:
+                if curr_linked_path != str(config_path):
                     handle_err(f"link exists, but not as expected ({curr_linked_path} != {config_path}")
                 else:
                     print("\tLink already exists. skipping...")
