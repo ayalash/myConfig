@@ -38,6 +38,8 @@
     conflicts = !git diff --name-only --diff-filter=U
     # Showing the content of a commit but excluding automatic (non code) files which adding a lot of noise
     cshow = !"content_show() { git show $@ -- ':!Cargo.lock' ':!package-lock.json'; }; content_show"
+    cdiff = !"content_diff() { git diff $@ -- ':!Cargo.lock' ':!package-lock.json'; }; content_diff"
+    clg = !"content_diff() { git lg -p $@ -- ':!Cargo.lock' ':!package-lock.json'; }; content_diff"
 [fetch]
     prune = true
 [push]
