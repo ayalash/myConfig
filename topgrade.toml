@@ -52,6 +52,7 @@
 # Additional git repositories to pull
 repos = [
     "~/src/work-scripts",
+    "~/src/research-packages/*/",
 #    "~/.config/something"
 ]
 

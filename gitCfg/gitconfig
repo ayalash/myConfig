@@ -16,6 +16,7 @@
 [diff]
     renames = copies
     renamelimit = 0
+	wsErrorHighlight = all
 [grep]
     lineNumber = true
 [branch]
