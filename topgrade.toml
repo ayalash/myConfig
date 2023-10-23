@@ -51,9 +51,12 @@
 #max_concurrency = 5
 # Additional git repositories to pull
 repos = [
-    "~/src/work-scripts",
+    "~/src/mine/work-scripts",
     "~/src/research-packages/*/",
-#    "~/.config/something"
+    "~/src/shira/*/",
+    "~/src/others/*/",
+    "~/src/dummies/*/",
+    "~/src/devops/*/",
 ]
 
 # Don't pull the predefined git repos

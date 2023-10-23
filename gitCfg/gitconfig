@@ -23,7 +23,7 @@
     autosetuprebase = always
 [alias]
     fix = commit --amend --no-edit --no-verify
-    curr-push = !git push -u origin +HEAD:$(git-symbolic-ref --short HEAD)
+    curr-push = !"curr_push() { git push -u ${1:-origin} +HEAD:$(git-symbolic-ref --short HEAD); }; curr_push"
     propose = !git push -u origin +HEAD:$USER/$(git-symbolic-ref --short HEAD)
     unpropose = !git push origin +:$USER/$(git-symbolic-ref --short HEAD)
     br = branch -vv --sort=-committerdate
