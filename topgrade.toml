@@ -51,7 +51,7 @@
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
-repos = [
+pull_only_repos = [
     "~/src/mine/work-scripts",
     "~/src/research-packages/*/",
     "~/src/shira/*/",
