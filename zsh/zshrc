@@ -43,7 +43,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Ripgrep
 #export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
-export SHIRA_TOKEN='iP4HDmyWTRu6eLKW9tSLZA.nhyeEAe0eozxdKq5MYrG5GFa8ZFiJF1uH1njMemPe98'
 
 # FZF
 source_if_exist $HOME/.fzf.zsh
