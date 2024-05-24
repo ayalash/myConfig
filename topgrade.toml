@@ -51,8 +51,6 @@
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
-#pull_only_repos = [
-#]
 
 # Don't pull the predefined git repos
 #pull_predefined = false
