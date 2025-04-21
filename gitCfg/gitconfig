@@ -26,7 +26,8 @@
     curr-push = !"curr_push() { git push -u ${1:-origin} +HEAD:$(git-symbolic-ref --short HEAD); }; curr_push"
     propose = !git push -u origin +HEAD:$USER/$(git-symbolic-ref --short HEAD)
     unpropose = !git push origin +:$USER/$(git-symbolic-ref --short HEAD)
-    br = branch -vv --sort=-committerdate
+    # br = branch -vv --sort=-committerdate
+    br = !git for-each-ref --sort=-committerdate --format='%(refname:short)     %09 %(objectname:short)  %(committerdate:format:%Y-%m-%d)  %(contents:subject)' refs/heads/
     lo = !git lg @{upstream}..
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn (%an)%Creset' --abbrev-commit --date=relative
     search = !"search() { git branch -l | grep $@; }; search"
