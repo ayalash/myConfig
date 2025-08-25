@@ -159,6 +159,15 @@ keybinds clear-defaults=true {
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+        bind "Ctrl 1" {GoToTab 1;}
+        bind "Ctrl 2" {GoToTab 2;}
+        bind "Ctrl 3" {GoToTab 3;}
+        bind "Ctrl 4" {GoToTab 4;}
+        bind "Ctrl 5" {GoToTab 5;}
+        bind "Ctrl 6" {GoToTab 6;}
+        bind "Ctrl 7" {GoToTab 7;}
+        bind "Ctrl 8" {GoToTab 8;}
+        bind "Ctrl 9" {GoToTab 9;}
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
@@ -174,6 +183,8 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "tab" {
         bind "Ctrl t" { SwitchToMode "tab"; }
+        bind "Ctrl F11" { NewPane "right"; SwitchToMode "normal"; }
+        bind "Ctrl F12" { NewTab; SwitchToMode "normal"; }
     }
     shared_except "locked" "pane" {
         bind "Ctrl p" { SwitchToMode "pane"; }
