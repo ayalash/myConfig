@@ -183,6 +183,7 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "tab" {
         bind "Ctrl t" { SwitchToMode "tab"; }
+        bind "Ctrl F10" { NewPane "down"; SwitchToMode "normal"; }
         bind "Ctrl F11" { NewPane "right"; SwitchToMode "normal"; }
         bind "Ctrl F12" { NewTab; SwitchToMode "normal"; }
     }
